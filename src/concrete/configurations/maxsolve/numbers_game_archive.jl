@@ -32,7 +32,9 @@ function NumbersGameArchiver(configuration::MaxSolveConfiguration)
             generation = Int[], 
             fitness = Float64[], 
             utility = Float64[], 
-            seed = Int[]
+            seed = Int[],
+            experiment = String[],
+            condition = String[],
         )
     end
     return NumbersGameArchiver(data)
@@ -132,13 +134,21 @@ function archive!(archiver::NumbersGameArchiver, state::State)
         generation = state.generation, 
         fitness = elite_fitness,
         utility = elite_minimum_gene,
-        seed = state.configuration.seed
+        seed = state.configuration.seed,
+        experiment = "coo_hard",
+        condition = state.configuration.algorithm,
     )
     push!(archiver.data, info)
     save_file = "$(state.configuration.archive_directory)/data.csv"
     CSV.write(save_file, archiver.data)
     learner_population_path = "$(state.configuration.archive_directory)/learner_population/$(state.generation).jls"
+    learner_children_path = "$(state.configuration.archive_directory)/learner_population/$(state.generation)_children.jls"
     serialize(learner_population_path, state.ecosystem.learner_population)
+    serialize(learner_children_path, state.ecosystem.learner_children)
     test_population_path = "$(state.configuration.archive_directory)/test_population/$(state.generation).jls"
     serialize(test_population_path, state.ecosystem.test_population)
+    test_children_path = "$(state.configuration.archive_directory)/test_population/$(state.generation)_children.jls"
+    serialize(test_children_path, state.ecosystem.test_children)
+    test_retirees_path = "$(state.configuration.archive_directory)/test_population/$(state.generation)_retirees.jls"
+    serialize(test_retirees_path, state.ecosystem.test_retirees)
 end

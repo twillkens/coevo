@@ -300,7 +300,7 @@ function update_tests_qmeu_alpha!(
     state::State
 )
     update_tests_qmeu!(
-        2, 10, 0, 1000, reproducer, evaluation, ecosystem, ecosystem_creator, state
+        1, 20, 0, 1000, reproducer, evaluation, ecosystem, ecosystem_creator, state
     )
 end
 
@@ -324,7 +324,7 @@ function update_tests_qmeu_gamma!(
     state::State
 )
     update_tests_qmeu!(
-        1, 80, 10, 1000, reproducer, evaluation, ecosystem, ecosystem_creator, state
+        1, 10, 80, 1000, reproducer, evaluation, ecosystem, ecosystem_creator, state
     )
 end
 # 

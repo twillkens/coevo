@@ -7,6 +7,7 @@ todo/*
 Manifest.toml
 Manifest.*
 img/
+new_img/*
 paperdata
 modesdata
 data

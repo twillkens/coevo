@@ -1,5 +1,10 @@
 using Random
 using Plots
+using Plots.PlotMeasures
+using Plots: Font
+using Measures
+Plots.default(fontfamily = ("Times Roman"))# titlefont = ("Times Roman"), legendfont = ("Times Roman"))
+gr()
 
 function generate_IC(n::Int, rho::Int)
     v = Int[zeros(rho) ; ones(n - rho)]
@@ -31,6 +36,42 @@ end
 
 using Random
 
+
+FONT_CHOICE = "Computer Modern"
+
+using Plots
+
+function plot_eca_plus(states::Matrix{Int}, title::String)
+    # Reverse the states matrix to have the initial state at the top
+    states_reversed = reverse(states, dims=1)
+    
+    # Define a custom color gradient: 0 -> white, 1 -> black
+    cmap = cgrad([:white, :black])
+    
+    # Plot using a direct image representation with the custom color gradient
+    heatmap(
+        states_reversed, 
+        #aspect_ratio=1, 
+        colorbar=false, 
+        legend=false, 
+        #ticks=nothing, 
+        #border=:none, 
+        cmap=cmap,
+        title=title,
+        xlabel="Site Position",
+        ylabel="Time",
+        yticks = (0:74:148, (148, 74, 0)),
+        xticks = ((1, 74, 149), (1, 74, 149)),
+        size=(600, 600),
+    titlefont= font(25,  FONT_CHOICE),
+    tickfont = font(15,   FONT_CHOICE),
+    guidefont = font(20,  FONT_CHOICE),
+            leftmargin=15mm, 
+            bottommargin=15mm, 
+            rightmargin=15mm,
+            topmargin=10mm,
+    )
+end
 
 
 function plot_eca(states::Matrix{Int})
@@ -251,5 +292,5 @@ rule =[1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1
 #rule =[1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 #rule =[1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
 
-run_test_2(reverse(rule))
-run_test_2(GKL)
+#run_test_2(reverse(rule))
+#run_test_2(GKL)

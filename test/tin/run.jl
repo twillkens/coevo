@@ -369,13 +369,55 @@ all_specs = [
     cfs_qmeu_beta_specs,
     cfs_qmeu_gamma_specs
 ]
+#for runner in runners
+#    for specs in all_specs
+#        pmap(runner, specs)
+#    end
+#end
+
+doc_qmeu_alpha_specs = [
+    AlgorithmSpecification(
+        id = i, name = "doc_qmeu_alpha", learner_algorithm = "doc", test_algorithm = "qmeu_alpha"
+    ) for i in 1:N_TRIALS
+]
+doc_qmeu_beta_specs = [
+    AlgorithmSpecification(
+        id = i, name = "doc_qmeu_beta", learner_algorithm = "doc", test_algorithm = "qmeu_beta"
+    ) for i in 1:N_TRIALS
+]
+doc_qmeu_gamma_specs = [
+    AlgorithmSpecification(
+        id = i, name = "doc_qmeu_gamma", learner_algorithm = "doc", test_algorithm = "qmeu_gamma"
+    ) for i in 1:N_TRIALS
+]
 
 
+all_specs = [
+    doc_qmeu_alpha_specs ; 
+    doc_qmeu_beta_specs ;
+    doc_qmeu_gamma_specs ;
+]
 
-runners = [run_dct_trial]
+runners = [run_ng_hard_trial]
     
 for runner in runners
-    for specs in all_specs
-        pmap(runner, specs)
-    end
+    pmap(runner, all_specs)
 end
+#function is_deceptive(v::Vector{Bool})
+#    n = length(v)
+#    
+#    # Check for a block of 7 ones or zeros
+#    for i in 1:n-6
+#        println("i")
+#        all_ones = all(v[i:i+6])
+#        all_zeros = all(!x for x in v[i:i+6])
+#        majority_ones = sum(v) / length(v) > 0.5
+#        majority_zeros = sum(v) / length(v) < 0.5
+#        if all_ones && majority_zeros || all_zeros && majority_ones
+#            return true
+#        end
+#    end
+#    
+#    return false
+#end
+#

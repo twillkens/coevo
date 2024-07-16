@@ -103,7 +103,7 @@ function plot_scores(
             label = detail.label,
             color = detail.color, 
             size = (1600, 800), 
-            leftmargin = 40mm, bottommargin = 15mm, rightmargin = 15mm, topmargin = 15mm,
+            leftmargin = 40mm, bottommargin = 20mm, rightmargin = 20mm, topmargin = 20mm,
             ylims = ylims, xlims = xlims,
             legendfont = font(25),
             titlefont = font(30),
@@ -117,205 +117,7 @@ function plot_scores(
 end
 
 
-function plot_coo_easy()
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("cfs_std", "CFS/STD", :purple),
-            PlotDetail("doc_std", "DOC/STD", :green),
-            PlotDetail("roulette", "ROULETTE", :blue),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: Genetic Algorithms", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_ga_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
 
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("cfs_std", "CFS/STD", :purple),
-            PlotDetail("doc_std", "DOC/STD", :green),
-            PlotDetail("roulette", "ROULETTE", :blue),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: Genetic Algorithms", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_ga",
-        ylims=(0.0, 17.0),
-        xlims=(0.0, 500.0)
-    )
-
-
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("p_phc_p_frs", "P-PHC-P-FRS", :orange),
-            PlotDetail("p_phc_p_uhs", "P-PHC-P-UHS", :brown),
-            PlotDetail("p_phc", "P-PHC", :grey),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: Population Pareto Hillclimbers", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_phc_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("p_phc_p_frs", "P-PHC-P-FRS", :orange),
-            PlotDetail("p_phc_p_uhs", "P-PHC-P-UHS", :brown),
-            PlotDetail("p_phc", "P-PHC", :grey),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: Population Pareto Hillclimbers", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_phc",
-        ylims=(0.0, 17.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("doc_qmeu_fast", "DOC/Q-FAST", :magenta),
-            PlotDetail("cfs_qmeu_fast", "CFS/Q-FAST", :navy),
-            PlotDetail("doc_qmeu_slow", "DOC/Q-SLOW", :lime),
-            PlotDetail("cfs_qmeu_slow", "CFS/Q-SLOW", :olive),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: QueMEU Variants", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_qmeu_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_easy_agg.csv",
-        [
-            PlotDetail("doc_qmeu_fast", "DOC/Q-FAST", :magenta),
-            PlotDetail("cfs_qmeu_fast", "CFS/Q-FAST", :navy),
-            PlotDetail("doc_qmeu_slow", "DOC/Q-SLOW", :lime),
-            PlotDetail("cfs_qmeu_slow", "CFS/Q-SLOW", :olive),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Easy: QueMEU Variants", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_ez_qmeu",
-        ylims=(0.0, 17.0),
-        xlims=(0.0, 500.0)
-    )
-end
-
-function plot_coo_hard()
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("cfs_std", "CFS/STD", :purple),
-            PlotDetail("doc_std", "DOC/STD", :green),
-            PlotDetail("control", "CONTROL", :red),
-            PlotDetail("roulette", "ROULETTE", :blue),
-        ],
-        legend=:topright, 
-        title="COO-Hard: Genetic Algorithms", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_ga_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("p_phc", "P-PHC", :grey),
-            PlotDetail("p_phc_p_frs", "P-PHC-P-FRS", :orange),
-            PlotDetail("p_phc_p_uhs", "P-PHC-P-UHS", :brown),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Hard: Population Pareto Hillclimbers", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_phc_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("cfs_qmeu_fast", "CFS/Q-FAST", :navy),
-            PlotDetail("doc_qmeu_fast", "DOC/Q-FAST", :magenta),
-            PlotDetail("cfs_qmeu_slow", "CFS/Q-SLOW", :olive),
-            PlotDetail("doc_qmeu_slow", "DOC/Q-SLOW", :lime),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Hard: QueMEU Variants", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_qmeu_scaled",
-        ylims=(-1.0, -1.0),
-        xlims=(0.0, 500.0)
-    )
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("cfs_std", "CFS/STD", :purple),
-            PlotDetail("doc_std", "DOC/STD", :green),
-            PlotDetail("control", "CONTROL", :red),
-            PlotDetail("roulette", "ROULETTE", :blue),
-        ],
-        legend=:topright, 
-        title="COO-Hard: Genetic Algorithms", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_ga",
-        ylims=(0.0, 2.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("p_phc", "P-PHC", :grey),
-            PlotDetail("p_phc_p_frs", "P-PHC-P-FRS", :orange),
-            PlotDetail("p_phc_p_uhs", "P-PHC-P-UHS", :brown),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Hard: Population Pareto Hillclimbers", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_phc",
-        ylims=(0.0, 2.0),
-        xlims=(0.0, 500.0)
-    )
-
-    plot_scores(
-        "coo_hard_agg.csv",
-        [
-            PlotDetail("cfs_qmeu_fast", "CFS/Q-FAST", :navy),
-            PlotDetail("doc_qmeu_fast", "DOC/Q-FAST", :magenta),
-            PlotDetail("cfs_qmeu_slow", "CFS/Q-SLOW", :olive),
-            PlotDetail("doc_qmeu_slow", "DOC/Q-SLOW", :lime),
-            PlotDetail("control", "CONTROL", :red),
-        ],
-        legend=:topleft, 
-        title="COO-Hard: QueMEU Variants", 
-        ylabel="Minimum Dimension Value", 
-        save_path="coo_hard_qmeu",
-        ylims=(0.0, 2.0),
-        xlims=(0.0, 500.0)
-    )
-end
 
 function plot_fsm_128()
     plot_scores(
@@ -391,6 +193,18 @@ end
 #plot_coo_hard()
 #plot_fsm_128()
 
+function filter_dataframe(df::DataFrame, filter_criteria::Dict{Symbol, AbstractVector})
+    # Initialize the filtered DataFrame with all rows
+    filtered_df = df
+
+    # Apply each filter criterion
+    for (col, values) in filter_criteria
+        filtered_df = filter(row -> row[col] in values, filtered_df)
+    end
+
+    return filtered_df
+end
+
 
 function plot_scores_2(
     data_filepath::String,
@@ -461,7 +275,7 @@ function plot_scores_2(
 end
 
 plot_scores_2(
-    "fsm_agg.csv",
+    "data/agg/collision_game/control-roulette.csv",
     [
         PlotDetail("cfs_qmeu_gamma", "CFS/Q-GAMMA", :indigo),
     ],
@@ -473,6 +287,19 @@ plot_scores_2(
     ylims=(0.4, 1.0),
     #xlims=(0.0, 500.0)
 )
+#plot_scores_2(
+#    "fsm_agg.csv",
+#    [
+#        PlotDetail("cfs_qmeu_gamma", "CFS/Q-GAMMA", :indigo),
+#    ],
+#    legend=:outertopright, 
+#    title="FSM Binary Prediction Task: Q-GAMMA vs. Different Size Classes", 
+#    ylabel="Expected Utility", 
+#    save_path="fsm_qmeu_classes",
+#    ycolumns = ["utility_16","utility_32","utility_64","utility_128",],
+#    ylims=(0.4, 1.0),
+#    #xlims=(0.0, 500.0)
+#)
 
 #COO_HARD = "logs/final_agg/coo/hard"
 #
